@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Form Validation</title>
+</head>
+<script> 
+function validate()								 
+{ 
+	var name = document.getElementById('name').value;
+	var address = document.getElementById('address').value;
+	var email = document.getElementById('email').value;
+	var password = document.getElementById('password').value;
+    if (!name) {
+        document.getElementById("nameError").innerHTML = "Enter your name";
+        return false;
+    } else if(!address) {
+    	document.getElementById("addressError").innerHTML = "Enter your address";
+    	return false;
+    } else if(!email) {
+    	document.getElementById("emailError").innerHTML = "Enter your email";
+    	return false;
+    } else if(!password) {
+    	document.getElementById("passwordError").innerHTML = "Enter your password";
+    	return false;
+    } else {
+        document.myForm.submit();
+        return true;
+    }
+
+}
+</script> 
+
+<style> 
+body {										 
+	margin-left: 70px; 
+	font-weight: bold ; 
+	float: left; 
+	clear: left; 
+	width: 100px; 
+	text-align: left; 
+	margin-right: 10px; 
+	font-family:sans-serif,bold, Arial, Helvetica; 
+	font-size:14px; 
+} 
+
+div { 
+	box-sizing: border-box; 
+	width: 100%; 
+	border: 100px solid black; 
+	float: left; 
+	align-content: center; 
+	align-items: center; 
+} 
+
+form {										 
+	margin: 0 auto; 
+	width: 600px; 
+}
+
+span {
+	color: red;
+}
+</style>
+</head> 
+
+<body> 
+<form name="form" action="/action.php" onsubmit="return validate();" method="post"> 
+	<h1 style="text-align: center"> Enter All Values </h1>
+	<br>
+	<div class="input-field">
+		<p>Name: <input type="text" id="name" name="name"> </p>
+		<span id="nameError"></span><br>
+		<p>Address: <input type="text" id="address" name="address"> </p>
+		<span id="addressError"></span><br> 
+		<p>E-mail: <input type="text" id="email" name="email"> </p>
+		<span id="emailError"></span><br> 
+		<p>Password: <input type="password" id="password" name="password"> </p>
+		<span id="passwordError"></span><br> 
+		<br> 
+		<p><input type="submit" value="Submit" name="Submit">	 
+			<input type="reset" value="Reset" name="Reset"> 
+		</p>		 
+	</div>
+</form> 
+</body> 
+</html> 
