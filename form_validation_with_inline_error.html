@@ -9,15 +9,28 @@ function validate()
 	var name = document.getElementById('name').value;
 	var address = document.getElementById('address').value;
 	var email = document.getElementById('email').value;
+	var phone = document.getElementById('phone').value;
 	var password = document.getElementById('password').value;
+
+	/**
+	* this pattern is setting for the email validation pattern
+	*/
+	var emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
     if (!name) {
         document.getElementById("nameError").innerHTML = "Enter your name";
         return false;
     } else if(!address) {
     	document.getElementById("addressError").innerHTML = "Enter your address";
     	return false;
+    } else if(!phone) {
+    	document.getElementById("phoneError").innerHTML = "Enter your phone";
+    	return false;
     } else if(!email) {
     	document.getElementById("emailError").innerHTML = "Enter your email";
+    	return false;
+    } else if(!email.match(emailFormat)) {
+    	document.getElementById("emailError").innerHTML = "email format must contains something@gmail.com";
     	return false;
     } else if(!password) {
     	document.getElementById("passwordError").innerHTML = "Enter your password";
@@ -68,13 +81,15 @@ span {
 	<h1 style="text-align: center"> Enter All Values </h1>
 	<br>
 	<div class="input-field">
-		<p>Name: <input type="text" id="name" name="name"> </p>
+		<p>Name: <input type="text" id="name" name="name" required="true"> </p>
 		<span id="nameError"></span><br>
-		<p>Address: <input type="text" id="address" name="address"> </p>
+		<p>Address: <input type="text" id="address" name="address" required="true"> </p>
 		<span id="addressError"></span><br> 
-		<p>E-mail: <input type="text" id="email" name="email"> </p>
+		<p>E-mail: <input type="email" id="email" name="email" required="true"> </p>
 		<span id="emailError"></span><br> 
-		<p>Password: <input type="password" id="password" name="password"> </p>
+		<p>Phone Number: <input type="number" id="phone" name="phone" min="0" required="true"> </p>
+		<span id="phoneError"></span><br> 
+		<p>Password: <input type="password" id="password" name="password" required="true"> </p>
 		<span id="passwordError"></span><br> 
 		<br> 
 		<p><input type="submit" value="Submit" name="Submit">	 
